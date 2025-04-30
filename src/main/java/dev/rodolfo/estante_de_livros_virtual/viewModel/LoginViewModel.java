@@ -1,5 +1,5 @@
 package dev.rodolfo.estante_de_livros_virtual.viewModel;
 
-public record AuthViewModel(String login, String password) {
+public record LoginViewModel(String login, String password) {
 
 }

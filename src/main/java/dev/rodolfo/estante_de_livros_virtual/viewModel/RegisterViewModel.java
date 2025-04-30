@@ -1,4 +1,7 @@
 package dev.rodolfo.estante_de_livros_virtual.viewModel;
 
-public record RegisterViewModel() {
+import dev.rodolfo.estante_de_livros_virtual.enums.UserRole;
+
+public record RegisterViewModel(String login, String password, UserRole userRole) {
+
 }

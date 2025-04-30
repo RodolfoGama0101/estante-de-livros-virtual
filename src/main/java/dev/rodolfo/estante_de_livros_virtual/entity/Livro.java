@@ -1,9 +1,7 @@
 package dev.rodolfo.estante_de_livros_virtual.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import dev.rodolfo.estante_de_livros_virtual.enums.StatusLeitura;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,4 +21,9 @@ public class Livro {
     private String generoLivro;
 
     private String autorLivro;
+
+    private Integer numeroPaginas;
+
+    @Enumerated(EnumType.STRING)
+    private StatusLeitura statusLeitura;
 }

@@ -2,8 +2,8 @@ package dev.rodolfo.estante_de_livros_virtual.controller;
 
 import dev.rodolfo.estante_de_livros_virtual.bean.LivroBean;
 import dev.rodolfo.estante_de_livros_virtual.entity.Livro;
-import dev.rodolfo.estante_de_livros_virtual.repository.LivroRepository;
 import dev.rodolfo.estante_de_livros_virtual.viewModel.LivroViewModel;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +29,7 @@ public class LivroController {
         return bean.buscarLivrosPorNome(nomeLivro);
     }
 
-    @PostMapping
+    @PostMapping("/add-livro")
     public ResponseEntity<Livro> adicionarLivro(
             @RequestBody LivroViewModel viewModel
     ) {
@@ -39,6 +39,7 @@ public class LivroController {
 
     @PostMapping("/add-livros")
     public ResponseEntity<List<Livro>> adicionarLivros(
+            @Valid
             @RequestBody List<LivroViewModel> viewModel
     ) {
         List<Livro> livrosSalvos = bean.addLivros(viewModel);
@@ -47,11 +48,21 @@ public class LivroController {
 
     @PutMapping("/atualizar-info-livro")
     public ResponseEntity<Livro> atualizarLivro(
+            @Valid
             @RequestParam Integer idLivro,
             @RequestBody LivroViewModel viewModel
     ) {
         Livro livroAtualizado = bean.atualizarLivro(idLivro, viewModel);
         return ResponseEntity.ok(livroAtualizado);
+    }
+
+    @PutMapping("/atualizar-info-livros")
+    public ResponseEntity<List<Livro>> atualizarLivros(
+            @Valid
+            @RequestBody List<LivroViewModel> viewModels
+    ) {
+        List<Livro> livrosAtualizados = bean.atualizarLivros(viewModels);
+        return ResponseEntity.ok(livrosAtualizados);
     }
 
     @DeleteMapping("/deletar-livro")
