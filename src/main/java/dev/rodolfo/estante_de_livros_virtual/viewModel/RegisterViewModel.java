@@ -1,4 +1,4 @@
 package dev.rodolfo.estante_de_livros_virtual.viewModel;
 
-public record AuthViewModel() {
+public record RegisterViewModel() {
 }
